@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -16,6 +17,14 @@ public class Game1 : Game
         IsMouseVisible = true;
     }
 
+    public void ArrayAndListIntroduction()
+    {
+        float[] grade = new float[5] {12, 14, 15, 11, 23.5f};
+
+        List<float> gradesList = new List<float>();
+        System.Console.WriteLine($" grades count: {gradesList.Count}");
+
+    }
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
