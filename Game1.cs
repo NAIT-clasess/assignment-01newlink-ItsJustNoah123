@@ -16,15 +16,6 @@ public class Game1 : Game
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
-
-    public void ArrayAndListIntroduction()
-    {
-        float[] grade = new float[5] {12, 14, 15, 11, 23.5f};
-
-        List<float> gradesList = new List<float>();
-        System.Console.WriteLine($" grades count: {gradesList.Count}");
-
-    }
     protected override void Initialize()
     {
         // TODO: Add your initialization logic here
