@@ -38,7 +38,7 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         // Load the space station texture
         _space = Content.Load<Texture2D>("Space");
-        _asteroid = Content.Load<Texture2D>("asteroids");
+        _asteroid = Content.Load<Texture2D>("asteroids (SMALL)");
         // TODO: use this.Content to load your game content here
     }
 
