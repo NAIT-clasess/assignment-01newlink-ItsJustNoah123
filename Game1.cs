@@ -13,6 +13,8 @@ public class Game1 : Game
     private SpriteBatch _spriteBatch;
     // Texture for the space background
     private Texture2D _space;
+    //Texture for the asteroid
+    private Texture2D _asteroid;
     // Store window dimensions
     private int _windowWidth;
     private int _windowHeight;
@@ -36,13 +38,13 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         // Load the space station texture
         _space = Content.Load<Texture2D>("Space");
+        _asteroid = Content.Load<Texture2D>("asteroids");
         // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
     {
         // TODO: Add your update logic here
-
         base.Update(gameTime);
     }
 
@@ -51,8 +53,10 @@ public class Game1 : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
-        // Draw the space texture to cover the entire window
+        // Draw the space texture to cover the entire window using stored dimensions
         _spriteBatch.Draw(_space, new Rectangle(0, 0, _windowWidth, _windowHeight), Color.White);
+        // Draw the asteroid texture at position (100, 100)
+        _spriteBatch.Draw(_asteroid, new Vector2(100, 100), Color.White);
         _spriteBatch.End();
         base.Draw(gameTime);
     }
