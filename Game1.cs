@@ -25,6 +25,8 @@ public class Game1 : Game
     private float _asteroidSpeed;
     //store asteroid position
     private Vector2 _asteroidPosition;
+    // Store game font
+    private SpriteFont _gameFont;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -52,7 +54,8 @@ public class Game1 : Game
         _asteroid = Content.Load<Texture2D>("asteroids (SMALL)");
         //load the spaceship texture
         _spaceshipAnimation = new SimpleAnimation(Content.Load<Texture2D>("Evasion"), 192, 192, 9, 6f);
-        // TODO: use this.Content to load your game content here
+        // Load the game font
+        _gameFont = Content.Load<SpriteFont>("gamefont");
     }
 
     protected override void Update(GameTime gameTime)
@@ -78,6 +81,8 @@ public class Game1 : Game
         _spriteBatch.Draw(_asteroid, _asteroidPosition, Color.White);
         // Draw the spaceship animation at the right side of the screen, centered vertically
         _spaceshipAnimation.Draw(_spriteBatch, new Vector2(_windowWidth - 250, _windowHeight / 2 - 96), SpriteEffects.None);
+        //Draw the "SPACE" font at the top center of the screen
+        _spriteBatch.DrawString(_gameFont, "SPACE WARS", new Vector2(180, 20), Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, 0f);
         _spriteBatch.End();
         base.Draw(gameTime);
     }
