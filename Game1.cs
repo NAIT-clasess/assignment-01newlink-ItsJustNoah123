@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SimpleAnimation;
 
 namespace Assignment_01;
 
@@ -15,9 +16,13 @@ public class Game1 : Game
     private Texture2D _space;
     //Texture for the asteroid
     private Texture2D _asteroid;
+    // Texture for the spaceship
+    private Texture2D _spaceship;
     // Store window dimensions
     private int _windowWidth;
     private int _windowHeight;
+    //Store animation for spaceship
+    private SimpleAnimation _spaceshipAnimation;
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -38,7 +43,10 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         // Load the space station texture
         _space = Content.Load<Texture2D>("Space");
+        // Load the asteroid texture
         _asteroid = Content.Load<Texture2D>("asteroids (SMALL)");
+        //load the spaceship texture
+        _spaceship = Content.Load<Texture2D>("spaceship");
         // TODO: use this.Content to load your game content here
     }
 
