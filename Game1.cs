@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SimpleAnimation;
+using SimpleAnim;
 
 namespace Assignment_01;
 
@@ -46,13 +46,14 @@ public class Game1 : Game
         // Load the asteroid texture
         _asteroid = Content.Load<Texture2D>("asteroids (SMALL)");
         //load the spaceship texture
-        _spaceship = Content.Load<Texture2D>("spaceship");
+        _spaceshipAnimation = new SimpleAnimation(Content.Load<Texture2D>("Evasion"), 192, 192, 9, 15f);
         // TODO: use this.Content to load your game content here
     }
 
     protected override void Update(GameTime gameTime)
     {
         // TODO: Add your update logic here
+        _spaceshipAnimation.Update(gameTime);
         base.Update(gameTime);
     }
 
@@ -65,6 +66,7 @@ public class Game1 : Game
         _spriteBatch.Draw(_space, new Rectangle(0, 0, _windowWidth, _windowHeight), Color.White);
         // Draw the asteroid texture at position (100, 100)
         _spriteBatch.Draw(_asteroid, new Vector2(100, 100), Color.White);
+        _spaceshipAnimation.Draw(_spriteBatch, new Vector2(200, 200), SpriteEffects.None);
         _spriteBatch.End();
         base.Draw(gameTime);
     }

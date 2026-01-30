@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace SimpleAnimation;
+namespace SimpleAnim;
 
 /// <summary>
 /// Handles simple sprite sheet animations by cycling through frames over time.
