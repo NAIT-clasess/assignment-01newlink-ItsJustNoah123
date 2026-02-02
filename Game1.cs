@@ -21,6 +21,8 @@ public class Game1 : Game
     private int _windowHeight;
     //Store animation for spaceship
     private SimpleAnimation _spaceshipAnimation;
+    //store 2nd spaceship animation
+    private SimpleAnimation _spaceshipAnimation2;
     //Store asteroid speed
     private float _asteroidSpeed;
     //store asteroid position
@@ -41,6 +43,7 @@ public class Game1 : Game
         _windowHeight = GraphicsDevice.Viewport.Height;
         // Initialize asteroid speed
         _asteroidSpeed = 20f;
+        // Initialize asteroid position
         _asteroidPosition = new Vector2(100, 100);
         base.Initialize();
     }
@@ -56,12 +59,17 @@ public class Game1 : Game
         _spaceshipAnimation = new SimpleAnimation(Content.Load<Texture2D>("Evasion"), 192, 192, 9, 6f);
         // Load the game font
         _gameFont = Content.Load<SpriteFont>("gamefont");
+        //load the 2nd spaceship texture
+        _spaceshipAnimation2 = new SimpleAnimation(Content.Load<Texture2D>("Attack_1"), 192, 192, 4, 6f);
     }
 
     protected override void Update(GameTime gameTime)
     {
         // TODO: Add your update logic here
+        // Update the spaceship animations
         _spaceshipAnimation.Update(gameTime);
+        _spaceshipAnimation2.Update(gameTime);
+        // Move the asteroid to the right and loop it back to the left side when it goes off screen
         _asteroidPosition.X += _asteroidSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
         if (_asteroidPosition.X > _windowWidth)
         {
@@ -81,6 +89,8 @@ public class Game1 : Game
         _spriteBatch.Draw(_asteroid, _asteroidPosition, Color.White);
         // Draw the spaceship animation at the right side of the screen, centered vertically
         _spaceshipAnimation.Draw(_spriteBatch, new Vector2(_windowWidth - 250, _windowHeight / 2 - 96), SpriteEffects.None);
+        // Draw the 2nd spaceship animation at the left side of the screen, centered vertically
+        _spaceshipAnimation2.Draw(_spriteBatch, new Vector2(50, _windowHeight / 2 - 96), SpriteEffects.None);
         //Draw the "SPACE" font at the top center of the screen
         _spriteBatch.DrawString(_gameFont, "SPACE WARS", new Vector2(180, 20), Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, 0f);
         _spriteBatch.End();
